@@ -1,0 +1,4 @@
+home:
+    intro: 'Intro to kpa'
+    title: 'kpa Title'
+    description: 'Edit <code>/translations/messages.en.yaml</code> and change the messages to reflect what kpa is all about! You <b>CAN</b> use HTML!'
