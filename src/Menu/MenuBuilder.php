@@ -12,11 +12,14 @@ class MenuBuilder extends LandingMenuBuilder
         $menu = $this->factory->createItem('root');
 $menu->setChildrenAttribute('class', 'nav navbar-nav mr-auto');
 
-$menu->addChild('survos_landing', ['route' => 'app_homepage'])
-->setAttribute('icon', 'fas fa-home');
+$menu->addChild('survos_landing', ['label' => 'home', 'route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
+$menu->addChild('app_load_songs', ['route' => 'app_load_songs'])->setAttribute('icon', 'fas fa-home');
+$menu->addChild('songs_credits', ['route' => 'app_credits_page'])->setAttribute('icon', 'fal fa-music');
+$menu->addChild('app_load_from_files', ['route' => 'app_load_from_files'])->setAttribute('icon', 'fas fa-music');
+$menu->addChild('app_load_youtube_channel', ['route' => 'app_load_youtube_channel'])->setAttribute('icon', 'fab fa-youtube');
+$menu->addChild('admin', ['route' => 'easyadmin'])->setAttribute('icon', 'fas fa-wrench');
 
-$menu->addChild('survos_landing_credits', ['route' => 'survos_landing_credits'])
-->setAttribute('icon', 'fas fa-trophy');
+$menu->addChild('survos_landing_credits', ['route' => 'survos_landing_credits'])->setAttribute('icon', 'fas fa-trophy');
 
 try {
 } catch (\Exception $e) {

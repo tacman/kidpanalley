@@ -9,12 +9,39 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/kpa/src/Controller/AppController.php'|file_link(0) }}">src/Controller/AppController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/kpa/templates/app/index.html.twig'|file_link(0) }}">templates/app/index.html.twig</a></code></li>
-    </ul>
+    {{ dump(lyrics) }}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>School</th>
+            <th>Artist</th>
+            <th>Writers</th>
+            <th>Musicians</th>
+            <th>Credits</th>
+            <th>Lyrics</th>
+            <th>Notes</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for song in songs %}
+            <tr>
+                <td>{{ song.title }}</td>
+                <td>{{ song.date ? song.date|date('Y-m') }}</td>
+                <td>{{ song.school }}</td>
+                <td>{{ song.featuredArtist }}</td>
+                <td>{{ song.writers }}</td>
+                <td>{{ song.musicians }}</td>
+                <td>{{ song.recordingCredits }}</td>
+                <td>{{ song.lyrics }}</td>
+                <td>{{ song.notes }}</td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
 </div>
 {% endblock %}

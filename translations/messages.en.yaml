@@ -2,3 +2,12 @@ home:
     intro: 'Intro to kpa'
     title: 'kpa Title'
     description: 'Edit <code>/translations/messages.en.yaml</code> and change the messages to reflect what kpa is all about! You <b>CAN</b> use HTML!'
+
+app_load_songs:
+    description: Load KPA spreadsheet
+
+app_load_from_files:
+    description: Load Best Friends spreadsheet and .txt lyrics
+
+song_credits:
+    description: Database listing of Best Friends song credits
