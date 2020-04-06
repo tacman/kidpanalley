@@ -32,6 +32,7 @@
         "symfony/validator": "^5.0",
         "symfony/web-link": "^5.0",
         "symfony/yaml": "^5.0",
+        "twig/extra-bundle": "3.x-dev",
         "yectep/phpspreadsheet-bundle": "*@dev"
     },
     "require-dev": {
@@ -89,10 +90,6 @@
         "survoslanding": {
             "type": "path",
             "url": "../Survos/LandingBundle"
-        },
-        "phpspreadsheet": {
-            "type": "path",
-            "url": "../Survos/phpspreadsheet-bundle"
         }
     }
 }

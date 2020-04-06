@@ -53,6 +53,11 @@ class Video
         return $this;
     }
 
+    public function getYoutubeUrl()
+    {
+        return sprintf('https://www.youtube.com/watch?v=' . $this->getYoutubeId());
+    }
+
     public function getTitle(): ?string
     {
         return $this->title;

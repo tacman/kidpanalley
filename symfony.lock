@@ -154,6 +154,9 @@
             "config/packages/knpu_oauth2_client.yaml"
         ]
     },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.1.x-dev"
+    },
     "league/oauth2-client": {
         "version": "2.4.1"
     },
@@ -185,7 +188,7 @@
         "version": "2.8.2"
     },
     "php": {
-        "version": "7.3"
+        "version": "7.4"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.x-dev"
@@ -301,6 +304,9 @@
     },
     "symfony/dependency-injection": {
         "version": "4.4.x-dev"
+    },
+    "symfony/deprecation-contracts": {
+        "version": "2.1-dev"
     },
     "symfony/doctrine-bridge": {
         "version": "4.4.x-dev"
@@ -445,11 +451,17 @@
             "tests/.gitignore"
         ]
     },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "1.15-dev"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "1.12-dev"
     },
     "symfony/polyfill-intl-idn": {
         "version": "1.12-dev"
+    },
+    "symfony/polyfill-intl-normalizer": {
+        "version": "1.15-dev"
     },
     "symfony/polyfill-mbstring": {
         "version": "1.12-dev"
@@ -459,6 +471,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "1.12-dev"
+    },
+    "symfony/polyfill-php80": {
+        "version": "1.15-dev"
     },
     "symfony/process": {
         "version": "4.4.x-dev"
@@ -522,6 +537,9 @@
     },
     "symfony/stopwatch": {
         "version": "4.4.x-dev"
+    },
+    "symfony/string": {
+        "version": "5.1-dev"
     },
     "symfony/swiftmailer-bundle": {
         "version": "2.5",
@@ -631,8 +649,17 @@
     "symfony/yaml": {
         "version": "4.4.x-dev"
     },
+    "twig/extra-bundle": {
+        "version": "3.x-dev"
+    },
+    "twig/string-extra": {
+        "version": "3.x-dev"
+    },
     "twig/twig": {
         "version": "3.x-dev"
+    },
+    "webimpress/safe-writer": {
+        "version": "2.1.x-dev"
     },
     "webmozart/assert": {
         "version": "1.5.0"

@@ -1,5 +1,20 @@
 easy_admin:
+    site_name: KPA
+
+    disabled_actions: ['delete', 'edit', 'new']
+    list:
+        actions: ['show']
+    design:
+        menu:
+            - { entity: Song, icon: 'fas fa-music' }
+            - { entity: Video, icon: 'fas fa-video' }
+
     entities:
-        # List the entity class name you want to manage
-        - App\Entity\Song
-        - App\Entity\Video
+        Song:
+            class: App\Entity\Song
+        Video:
+            class: App\Entity\Video
+            list:
+                fields:
+                    - { property: 'youtubeUrl', type: 'url' }
+                    - { property: 'title' }

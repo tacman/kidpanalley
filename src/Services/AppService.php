@@ -58,7 +58,7 @@ class AppService
             foreach ($list->items as $item) {
                 $item = (object) $item;
                 $id = $item->id->videoId;
-                if (!$video = $repo->findBy(['youtubeId' => $id])) {
+                if (!$video = $repo->findOneBy(['youtubeId' => $id])) {
                     $video = (new Video())
                         ->setYoutubeId($id);
                     $this->em->persist($video);

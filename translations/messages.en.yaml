@@ -1,13 +1,17 @@
 home:
+    title: 'Kid Pan +Alley Asset Management'
     intro: 'Intro to kpa'
-    title: 'kpa Title'
-    description: 'Edit <code>/translations/messages.en.yaml</code> and change the messages to reflect what kpa is all about! You <b>CAN</b> use HTML!'
+    description: 'KPA Assets (youtube videos, songs, lyrics, etc.)'
 
 app_load_songs:
-    description: Load KPA spreadsheet
+    label: Load Songs
+    description: Load KPA spreadsheet for 5k songs (into Songs)
 
 app_load_from_files:
     description: Load Best Friends spreadsheet and .txt lyrics
 
 song_credits:
     description: Database listing of Best Friends song credits
+
+app_load_youtube_channel:
+    description: Loads the KPA youtube channel to Videos
