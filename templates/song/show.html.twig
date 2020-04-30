@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Song{% endblock %}
+
+{% block body %}
+    <h1>Song</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ song.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ song.title }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ song.date ? song.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ song.year }}</td>
+            </tr>
+            <tr>
+                <th>School</th>
+                <td>{{ song.school }}</td>
+            </tr>
+            <tr>
+                <th>Lyrics</th>
+                <td>{{ song.lyrics }}</td>
+            </tr>
+            <tr>
+                <th>FeaturedArtist</th>
+                <td>{{ song.featuredArtist }}</td>
+            </tr>
+            <tr>
+                <th>RecordingCredits</th>
+                <td>{{ song.recordingCredits }}</td>
+            </tr>
+            <tr>
+                <th>Musicians</th>
+                <td>{{ song.musicians }}</td>
+            </tr>
+            <tr>
+                <th>Writers</th>
+                <td>{{ song.writers }}</td>
+            </tr>
+            <tr>
+                <th>WordpressPageId</th>
+                <td>{{ song.wordpressPageId }}</td>
+            </tr>
+            <tr>
+                <th>Recording</th>
+                <td>{{ song.recording }}</td>
+            </tr>
+            <tr>
+                <th>Publisher</th>
+                <td>{{ song.publisher }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ song.notes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('song_index') }}">back to list</a>
+
+    <a href="{{ path('song_edit', {'id': song.id}) }}">edit</a>
+
+    {{ include('song/_delete_form.html.twig') }}
+{% endblock %}
