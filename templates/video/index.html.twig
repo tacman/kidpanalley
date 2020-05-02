@@ -26,7 +26,9 @@
                 <td>{{ video.date ? video.date|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('video_show', video.rp) }}">show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('video_edit', video.rp) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

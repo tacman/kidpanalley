@@ -230,62 +230,10 @@ class AppController extends AbstractController
      *
      * @Route("/load-kpa-songs", name="app_load_songs")
      */
-    public function loadSongs(EntityManagerInterface $em, LoggerInterface $logger)
+    public function loadSongs(AppService $appService)
     {
-        /** @var Xls $readerXlsx */
-        $readerXlsx  = $this->spreadsheet->createReader('Xls');
-        /** @var Spreadsheet $spreadsheet */
-        try {
-            $spreadsheet = $readerXlsx->load(__DIR__ . '/../../data/kpa-songs.xls');
-        } catch (\Exception $exception) {
-            dd($exception);
-        }
-
-        /** @var Worksheet $sheet */
-        $sheet = $spreadsheet->getActiveSheet();
-        $songs = [];
-        $lyrics = [];
-
-        foreach ($sheet->toArray() as $idx=>$row) {
-            if ($idx === 0) {
-                $header = $row;
-
-            } else {
-                $data = array_combine($header, $row);
-                if (!$data['Instrumentals']) {
-                    continue;
-                }
-                $song = (new Song())
-                    ->setTitle($data['Instrumentals'])
-                    ->setSchool($data['school'])
-                    ->setWriters($data['writer']);
-
-                $em->persist($song);
-                if ($data['date']) {
-                    try {
-                        $song
-                            ->setDate(new \DateTimeImmutable($data['date']));
-                        $song->setYear((int)$song->getDate()->format('Y'));
-                    } catch (\Exception $e) {
-                        $logger->error("Line $idx: Can't set date " . $data['date'] . ' on ' . $song->getTitle());
-                    }
-                }
-                if ($data['year']) {
-                    $song
-                        ->setYear((int)$data['year']);
-                }
-
-                $song->setNotes(json_encode($data));
-                array_push($songs, $song);
-                // dump($data);
-            }
-            if ($idx == 45) {
-                // dd($data, $song);
-                // break;
-            }
-        }
-
-        $em->flush();
+        $appService->loadSongs();
+        return $this->redirectToRoute('song_index');
 
         return $this->render('app/index.html.twig', [
             'lyrics' => $lyrics,
@@ -299,7 +247,7 @@ class AppController extends AbstractController
 
     /**
      *
-     * @Route("/load-files", name="app_load_from_files")
+     * @Route("/load-lyrics-from-files", name="app_load_lyrics")
      */
     public function index(EntityManagerInterface $em)
     {

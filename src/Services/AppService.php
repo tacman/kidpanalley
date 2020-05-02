@@ -4,12 +4,17 @@
 namespace App\Services;
 
 
+use App\Entity\Song;
 use App\Entity\Video;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpOffice\PhpSpreadsheet\Reader\Xls;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Serializer\SerializerInterface;
+use Yectep\PhpSpreadsheetBundle\Factory;
 
 class AppService
 {
@@ -23,12 +28,77 @@ class AppService
      * @var LoggerInterface
      */
     private $logger;
+    /**
+     * @var Factory
+     */
+    private $spreadsheet;
 
-    public function __construct(EntityManagerInterface $em, SerializerInterface $serializer, LoggerInterface $logger)
+    public function __construct(EntityManagerInterface $em, SerializerInterface $serializer, Factory $spreadsheet, LoggerInterface $logger)
     {
         $this->em = $em;
         $this->serializer = $serializer;
         $this->logger = $logger;
+        $this->spreadsheet = $spreadsheet;
+    }
+
+    public function loadSongs()
+    {
+        /** @var Xls $readerXlsx */
+        $readerXlsx  = $this->spreadsheet->createReader('Xls');
+        /** @var Spreadsheet $spreadsheet */
+        try {
+            $spreadsheet = $readerXlsx->load(__DIR__ . '/../../data/kpa-songs.xls');
+        } catch (\Exception $exception) {
+            dd($exception);
+        }
+
+        /** @var Worksheet $sheet */
+        $sheet = $spreadsheet->getActiveSheet();
+        $songs = [];
+        $lyrics = [];
+        $header = [];
+
+        foreach ($sheet->toArray() as $idx=>$row) {
+            if ($idx === 0) {
+                $header = $row;
+            } else {
+                $data = array_combine($header, $row);
+                if (!$data['Instrumentals']) {
+                    continue;
+                }
+                $song = (new Song())
+                    ->setTitle($data['Instrumentals'])
+                    ->setSchool($data['school'])
+                    ->setWriters($data['writer']);
+
+                $em = $this->em;
+                $logger = $this->logger;
+                $em->persist($song);
+                if ($data['date']) {
+                    try {
+                        $song
+                            ->setDate(new \DateTimeImmutable($data['date']));
+                        $song->setYear((int)$song->getDate()->format('Y'));
+                    } catch (\Exception $e) {
+                        $logger->error("Line $idx: Can't set date " . $data['date'] . ' on ' . $song->getTitle());
+                    }
+                }
+                if ($data['year']) {
+                    $song
+                        ->setYear((int)$data['year']);
+                }
+
+                $song->setNotes(json_encode($data));
+                array_push($songs, $song);
+                // dump($data);
+            }
+            if ($idx == 45) {
+                // dd($data, $song);
+                // break;
+            }
+        }
+
+        $em->flush();
     }
 
     /**
