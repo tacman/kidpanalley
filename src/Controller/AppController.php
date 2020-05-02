@@ -222,8 +222,7 @@ class AppController extends AbstractController
     {
         $key = $this->getParameter('youtube_api_key');
         $videos = $appService->fetchYoutubeChannel($key, 'UCt7IqS6nJWbJk6HByzJs5Tg');
-
-        dd($videos);
+        return $this->redirectToRoute('video_index');
 
     }
 
