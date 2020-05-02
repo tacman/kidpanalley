@@ -1,0 +1,13 @@
+# config/serializer/serialization.yaml
+
+App\Entity\User:
+  attributes:
+    id:
+      groups: ['Default']
+    email:
+      groups: ['Default']
+
+App\Entity\Song:
+  attributes:
+    title:
+      groups: ['Default']

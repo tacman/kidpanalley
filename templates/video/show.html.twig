@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Video{% endblock %}
+
+{% block body %}
+    <h1>Video</h1>
+
+    <object width="420" height="315"
+            data="https://www.youtube.com/embed/{{ video.youtubeId }}">
+    </object>
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ video.id }}</td>
+            </tr>
+            <tr>
+                <th>YoutubeId</th>
+                <td>{{ video.youtubeId }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ video.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ video.description }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ video.date ? video.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('video_index') }}">back to list</a>
+
+    <a href="{{ path('video_edit', video.rp) }}">edit</a>
+{% endblock %}

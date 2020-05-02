@@ -61,6 +61,17 @@ class AppController extends AbstractController
         return [$u, $p];
     }
 
+    /**
+     * @Route("/", name="app_homepage", methods={"GET"})
+     */
+    public function homepage()
+    {
+        $user = $this->getUser();
+        return $this->render('app/homepage.html.twig', [
+            'user' => $user
+        ]);
+    }
+
     private function loadLyrics($songs)
     {
 

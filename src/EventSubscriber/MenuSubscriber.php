@@ -13,9 +13,13 @@ class MenuSubscriber implements EventSubscriberInterface
         $menu->addChild('survos_landing', ['label' => 'home', 'route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
         $menu->addChild('songs_credits', ['route' => 'app_credits_page'])->setAttribute('icon', 'fal fa-music');
 
-        $songMenu = $menu->addChild('song');
+        $songMenu = $menu->addChild('songs');
         $songMenu->addChild('song.list', ['route' => 'song_index']);
         $songMenu->addChild('song.new', ['route' => 'song_new']);
+
+        $videoMenu = $menu->addChild('videos');
+        $videoMenu->addChild('video.list', ['route' => 'video_index']);
+        $videoMenu->addChild('video.new', ['route' => 'video_new']);
 
         $loadMenu = $menu->addChild('load');
         $loadMenu->addChild('app_load_songs', ['route' => 'app_load_songs'])->setAttribute('icon', 'fas fa-home');

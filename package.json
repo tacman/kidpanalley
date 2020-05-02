@@ -20,6 +20,9 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "bootstrap": "^4.4.1"
+        "bootstrap": "^4.4.1",
+        "datatables": "^1.10.18",
+        "datatables.net": "^1.10.20",
+        "datatables.net-bs4": "^1.10.20"
     }
 }

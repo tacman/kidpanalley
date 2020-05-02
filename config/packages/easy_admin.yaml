@@ -6,12 +6,16 @@ easy_admin:
         actions: ['show']
     design:
         menu:
+            - { label: 'Dashboard', route: 'app_homepage', icon: dashboard }
             - { entity: Song, icon: 'fas fa-music' }
             - { entity: Video, icon: 'fas fa-video' }
+            - { entity: School, icon: 'fas fa-university' }
 
     entities:
         Song:
             class: App\Entity\Song
+        School:
+            class: App\Entity\School
         Video:
             class: App\Entity\Video
             list:

@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Survos\LandingBundle\Entity\SurvosBaseEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VideoRepository")
  */
-class Video
+class Video extends SurvosBaseEntity
 {
     /**
      * @ORM\Id()
@@ -92,5 +93,10 @@ class Video
         $this->date = $date;
 
         return $this;
+    }
+
+    function getUniqueIdentifiers()
+    {
+        return ['videoId' => $this->getYoutubeId()];
     }
 }
