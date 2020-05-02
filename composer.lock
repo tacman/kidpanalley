@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57bcdada4093e41f8526d78387bd54dc",
+    "content-hash": "83fb45f889489ec676cde3323e78e882",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -4198,10 +4198,16 @@
         {
             "name": "survos/landing-bundle",
             "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "../Survos/LandingBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/LandingBundle.git",
                 "reference": "150d3d0a146c5a0c03075a699bd2ac9afa37f475"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/LandingBundle/zipball/150d3d0a146c5a0c03075a699bd2ac9afa37f475",
+                "reference": "150d3d0a146c5a0c03075a699bd2ac9afa37f475",
+                "shasum": ""
             },
             "require": {
                 "ext-json": "*",
@@ -4237,6 +4243,7 @@
                     "Survos\\LandingBundle\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4248,10 +4255,11 @@
             ],
             "description": "Add some tools and resources to a Symfony5 application",
             "keywords": [
+                "Skeleton",
                 "generator",
-                "skeleton",
                 "symfony5"
-            ]
+            ],
+            "time": "2020-05-01T13:34:26+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
