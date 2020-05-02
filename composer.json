@@ -90,11 +90,5 @@
             "allow-contrib": true,
             "require": "^5.0"
         }
-    },
-    "repositories": {
-        "survoslanding": {
-            "type": "path",
-            "url": "../Survos/LandingBundle"
-        }
     }
 }
