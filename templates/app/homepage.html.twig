@@ -11,12 +11,12 @@
             {# ... infobox widget, solid background ... #}
             {% embed '@AdminLTE/Widgets/infobox-widget.html.twig'  with {
                 'solid' : 'red',
-                'icon'  : 'far fa-star',
+                'icon'  : 'fas fa-wrench',
                 'progress' : 40
             } %}
 
                 {% block box_text %}This site is for administrators only{% endblock %}
-                {% block progress_description %}The progress description{% endblock %}
+                {% block progress_description %}Songs, Videos, Schools{% endblock %}
             {% endembed %}
 
         </div>
@@ -25,11 +25,11 @@
             {# ... infobox widget, colored icon ... #}
             {% embed '@AdminLTE/Widgets/infobox-widget.html.twig'  with {
                 'color' : 'aqua',
-                'icon'  : 'fas fa-comments',
+                'icon'  : 'fas fa-music',
             } %}
-                {% block box_text %}Login{% endblock %}
+                {% block box_text %}Songs{% endblock %}
                 {% block box_number %}999.9{% endblock %}
-                {% block progress_description %}Works as well without progress bar{% endblock %}
+                {% block progress_description %}Songs in the Database{% endblock %}
             {% endembed %}
         </div>
     </div>
@@ -54,7 +54,18 @@
                 {% endblock %}
             {% endembed %}
         </div>
+
         <div class="col-md-6">
+            {% if is_granted('ROLE_ADMIN') %}
+                Welcome, {{ app.user }}
+                {% else %}
+                {{ block('visitor_about_box') }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block visitor_about_box %}
             {# ... box widget with some options ... #}
             {% embed '@AdminLTE/Widgets/box-widget.html.twig' with {
                 'boxtype' : 'success',
@@ -83,6 +94,4 @@
                     </div>
                 {% endblock %}
             {% endembed %}
-        </div>
-    </div>
 {% endblock %}

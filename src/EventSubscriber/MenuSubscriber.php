@@ -2,12 +2,14 @@
 
 namespace App\EventSubscriber;
 
+use Survos\LandingBundle\Traits\KnpMenuHelperTrait;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use KevinPapst\AdminLTEBundle\Event\KnpMenuEvent;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class MenuSubscriber implements EventSubscriberInterface
 {
+    use KnpMenuHelperTrait;
     /**
      * @param AuthorizationCheckerInterface $security
      */
@@ -15,6 +17,8 @@ class MenuSubscriber implements EventSubscriberInterface
     {
         $this->security = $security;
     }
+
+
 
     public function onKnpMenuEvent(KnpMenuEvent $event)
     {
@@ -38,7 +42,7 @@ class MenuSubscriber implements EventSubscriberInterface
         if ($isSuperAdmin) {
             $loadMenu = $menu->addChild('load');
             $loadMenu->addChild('app_load_songs', ['route' => 'app_load_songs'])->setAttribute('icon', 'fas fa-home');
-            $loadMenu->addChild('app_load_lyrics', ['route' => 'app_load_from_files'])->setAttribute('icon', 'fas fa-music');
+            $loadMenu->addChild('app_load_lyrics', ['route' => 'app_load_lyrics'])->setAttribute('icon', 'fas fa-music');
             $loadMenu->addChild('app_load_youtube_channel', ['route' => 'app_load_youtube_channel'])->setAttribute('icon', 'fab fa-youtube');
             $menu->addChild('survos_landing_credits', ['route' => 'survos_landing_credits'])->setAttribute('icon', 'fas fa-trophy');
         }
@@ -46,6 +50,8 @@ class MenuSubscriber implements EventSubscriberInterface
         if ($isAdmin) {
             $menu->addChild('admin', ['route' => 'easyadmin'])->setAttribute('icon', 'fas fa-wrench');
         }
+
+        $this->authMenu($this->security, $menu);
 
 
         // ...

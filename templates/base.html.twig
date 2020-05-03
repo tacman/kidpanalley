@@ -23,3 +23,19 @@
         {{ parent() }}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
+
+{# could also overwrite template
+        {% include '@AdminLTE/Partials/_footer.html.twig' %}
+#}
+
+{% block footer %}
+<footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+
+    </div>
+    <!-- Default to the left -->
+    <strong>Data Copyright &copy; 2020 <a href="#">Kid Pan Alley</a>.</strong>  All rights reserved.
+    <strong>Code Copyright &copy; 2020 <a href="#">Survos</a>.</strong>  All rights reserved.
+</footer>
+{% endblock %}

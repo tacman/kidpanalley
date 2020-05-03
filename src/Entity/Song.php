@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Survos\LandingBundle\Entity\SurvosBaseEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SongRepository")
  */
-class Song
+class Song extends SurvosBaseEntity
 {
     /**
      * @ORM\Id()
@@ -81,6 +82,11 @@ class Song
      */
     private $notes;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $lyricsLength;
+
 
 
     public function getId(): ?int
@@ -108,6 +114,7 @@ class Song
     public function setLyrics(?string $lyrics): self
     {
         $this->lyrics = $lyrics;
+        $this->setLyricsLength(mb_strlen($lyrics));
 
         return $this;
     }
@@ -242,5 +249,22 @@ class Song
         $this->date = $date;
 
         return $this;
+    }
+
+    public function getLyricsLength(): ?int
+    {
+        return $this->lyricsLength;
+    }
+
+    public function setLyricsLength(?int $lyricsLength): self
+    {
+        $this->lyricsLength = $lyricsLength;
+
+        return $this;
+    }
+
+    function getUniqueIdentifiers()
+    {
+        return ['id' => $this->getId()];
     }
 }

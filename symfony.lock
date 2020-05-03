@@ -252,9 +252,6 @@
     "psr/event-dispatcher": {
         "version": "1.0.x-dev"
     },
-    "psr/http-client": {
-        "version": "1.0.x-dev"
-    },
     "psr/http-message": {
         "version": "1.0.x-dev"
     },

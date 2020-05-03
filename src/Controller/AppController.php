@@ -240,8 +240,6 @@ class AppController extends AbstractController
             'songs' => $songs
         ]);
 
-
-
     }
 
 
@@ -249,36 +247,11 @@ class AppController extends AbstractController
      *
      * @Route("/load-lyrics-from-files", name="app_load_lyrics")
      */
-    public function index(EntityManagerInterface $em)
+    public function index(AppService $appService, EntityManagerInterface $em)
     {
-
-        $finder = new Finder();
-// find all files in the current directory
-        $finder->files()->in(__DIR__ . '/../../data/lyrics');
-
-        foreach ($finder as $file) {
-            $absoluteFilePath = $file->getRealPath();
-            if (!is_readable($absoluteFilePath)) {
-                throw new \Exception($absoluteFilePath . ' is not readable');
-            }
-
-            try {
-                $reader = IOFactory::load($absoluteFilePath);
-
-                $fileNameWithExtension = $file->getRelativePathname();
-                $reader = IOFactory::createReader();
-                $phpWord = $reader->load($absoluteFilePath);
-                dd($absoluteFilePath, $phpWord);
-
-            } catch (\Exception $e) {
-                $text = shell_exec($cmd = sprintf('catdoc "%s"', $absoluteFilePath));
-            }
-
-            dd($text, $absoluteFilePath);
-
-            // ...
-        }
-
+        $dir = __DIR__ . '/../../data/lyrics';
+        $appService->loadLyrics($dir);
+        return $this->redirectToRoute('song_index', ['lyrics_only' => true]);
     }
 
     /**

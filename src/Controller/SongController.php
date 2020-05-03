@@ -21,7 +21,7 @@ class SongController extends AbstractController
     public function index(SongRepository $songRepository): Response
     {
         return $this->render('song/index.html.twig', [
-            'songs' => $songRepository->findBy([], null, 20),
+            'songs' => $songRepository->findBy([], ['id' => 'DESC'], 20),
         ]);
     }
 

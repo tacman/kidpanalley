@@ -6,12 +6,20 @@ namespace App\Services;
 
 use App\Entity\Song;
 use App\Entity\Video;
+use App\Repository\SongRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpOffice\PhpSpreadsheet\Reader\Xls;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use PhpOffice\PhpWord\Element\PageBreak;
+use PhpOffice\PhpWord\Element\Section;
+use PhpOffice\PhpWord\Element\Text;
+use PhpOffice\PhpWord\Element\TextBreak;
+use PhpOffice\PhpWord\Element\TextRun;
+use PhpOffice\PhpWord\IOFactory;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Serializer\SerializerInterface;
 use Yectep\PhpSpreadsheetBundle\Factory;
@@ -39,6 +47,118 @@ class AppService
         $this->serializer = $serializer;
         $this->logger = $logger;
         $this->spreadsheet = $spreadsheet;
+    }
+
+    private function getText($elements)
+    {
+        $text = '';
+        foreach ($elements as $element) {
+            $elementClass =  get_class($element);
+            switch ($elementClass) {
+                case PageBreak::class:
+                    $text .= "\f";
+                    break;
+                case TextBreak::class:
+                    $text .= "\n\n";
+                    break;
+                case TextRun::class:
+                case Text::class:
+                    $text .= $element->getText();
+                    break;
+                case Section::class:
+                    $text .= $this->getText($element->getElements());
+                    break;
+                default:
+                    dd($elementClass);
+            }
+            if (method_exists($element, 'getText')) {
+                $text .= $element->getText();
+            } else {
+                if (method_exists($element, 'getElements')) {
+                    $text .= $this->getText($element->getElements());
+                } else {
+                    // $text .= "-no-text\n";
+                }
+            }
+        }
+        return $text;
+        dd($text);
+
+    }
+    public function loadLyrics(string $dir)
+    {
+        $finder = new Finder();
+        $finder->files()->in($dir);
+
+        foreach ($finder as $file) {
+            dump($file->getFilename());
+            $absoluteFilePath = $file->getRealPath();
+            if (!is_readable($absoluteFilePath)) {
+                throw new \Exception($absoluteFilePath . ' is not readable');
+            }
+
+            try {
+                $reader = IOFactory::load($absoluteFilePath);
+
+                $fileNameWithExtension = $file->getRelativePathname();
+                $reader = IOFactory::createReader();
+                $phpWord = $reader->load($absoluteFilePath);
+
+                $sections = $phpWord->getSections();
+                $text = $this->getText($sections);
+
+
+                /*
+                $text = '';
+                foreach ($sections as $s) {
+                    $els = $s->getElements();
+                    foreach ($els as $e) {
+                        $class = get_class($e);
+                        if (method_exists($class, 'getText')) {
+                            $text .= $e->getText();
+                        } else {
+                            dd($text, $e, $class, get_class_methods($class));
+                            $text .= $e;
+                        }
+                    }
+                }
+                dd($text);
+                continue;
+                dd($absoluteFilePath, $phpWord);
+                */
+
+            } catch (\Exception $e) {
+                $text = shell_exec($cmd = sprintf('catdoc "%s"', $absoluteFilePath));
+                // split on formfeed
+                $songs = preg_split("|\f|", $text);
+
+
+                foreach ($songs as $songStr) {
+                    $lines = explode("\n", $songStr);
+                    // remove all blank lines
+                    $lines = array_filter($lines, function ($str) { return !empty(trim($str)); });
+                    // we could go through each line and see if a title matches.  For now, just use the first line as the title.
+                    //
+                    $title = array_shift($lines);
+                    $by = array_shift($lines);
+
+                    // find or create the song, by title
+                    /** @var SongRepository $repo */
+                    $repo = $this->em->getRepository(Song::class);
+                    if (!$song = $repo->findOneBy(['title'=>$title])) {
+                        $song = (new Song())
+                            ->setTitle($title);
+                        $this->em->persist($song);
+                    }
+                    $song->setLyrics(join("\n", $lines));
+                    $this->em->flush();
+                }
+            }
+
+            // dd($text, $absoluteFilePath);
+
+            // ...
+        }
     }
 
     public function loadSongs()
