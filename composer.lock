@@ -1057,12 +1057,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "0f594ce18eacc96646d7120b54beed96fd92fb2c"
+                "reference": "a45d890521253c3ea4d58ddd0697b39f4a12e42b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/0f594ce18eacc96646d7120b54beed96fd92fb2c",
-                "reference": "0f594ce18eacc96646d7120b54beed96fd92fb2c",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/a45d890521253c3ea4d58ddd0697b39f4a12e42b",
+                "reference": "a45d890521253c3ea4d58ddd0697b39f4a12e42b",
                 "shasum": ""
             },
             "require": {
@@ -1147,7 +1147,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-01T20:38:16+00:00"
+            "time": "2020-05-03T13:13:09+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -4148,12 +4148,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/LandingBundle.git",
-                "reference": "150d3d0a146c5a0c03075a699bd2ac9afa37f475"
+                "reference": "8c6c56dd38c8bc4d7c20fdc1514f5f2d1c987abe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/LandingBundle/zipball/150d3d0a146c5a0c03075a699bd2ac9afa37f475",
-                "reference": "150d3d0a146c5a0c03075a699bd2ac9afa37f475",
+                "url": "https://api.github.com/repos/survos/LandingBundle/zipball/8c6c56dd38c8bc4d7c20fdc1514f5f2d1c987abe",
+                "reference": "8c6c56dd38c8bc4d7c20fdc1514f5f2d1c987abe",
                 "shasum": ""
             },
             "require": {
@@ -4206,7 +4206,7 @@
                 "generator",
                 "symfony5"
             ],
-            "time": "2020-05-01T13:34:26+00:00"
+            "time": "2020-05-03T14:07:16+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7517,19 +7517,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "bb26ba467a177983ed913783de53dac74c6860c6"
+                "reference": "8d7cfcf3a961996469c3179e6af56f25711779bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/bb26ba467a177983ed913783de53dac74c6860c6",
-                "reference": "bb26ba467a177983ed913783de53dac74c6860c6",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/8d7cfcf3a961996469c3179e6af56f25711779bb",
+                "reference": "8d7cfcf3a961996469c3179e6af56f25711779bb",
                 "shasum": ""
             },
             "require": {
                 "ext-xml": "*",
                 "php": "^7.2.5",
                 "symfony/config": "^4.4|^5.0",
-                "symfony/dependency-injection": "^4.4|^5.0",
+                "symfony/dependency-injection": "^5.1",
                 "symfony/event-dispatcher": "^5.1",
                 "symfony/http-kernel": "^5.0",
                 "symfony/polyfill-php80": "^1.15",
@@ -7608,7 +7608,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-01T07:50:12+00:00"
+            "time": "2020-05-03T06:43:40+00:00"
         },
         {
             "name": "symfony/security-core",
@@ -7616,12 +7616,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-core.git",
-                "reference": "36da4f7f9c1cc2d0d709fe7b88da638799be19f4"
+                "reference": "eadb75975ee3099ffd1ac8773f088198dbf126bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-core/zipball/36da4f7f9c1cc2d0d709fe7b88da638799be19f4",
-                "reference": "36da4f7f9c1cc2d0d709fe7b88da638799be19f4",
+                "url": "https://api.github.com/repos/symfony/security-core/zipball/eadb75975ee3099ffd1ac8773f088198dbf126bf",
+                "reference": "eadb75975ee3099ffd1ac8773f088198dbf126bf",
                 "shasum": ""
             },
             "require": {
@@ -7697,7 +7697,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-21T21:19:50+00:00"
+            "time": "2020-05-03T06:43:40+00:00"
         },
         {
             "name": "symfony/security-csrf",
@@ -7847,12 +7847,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-http.git",
-                "reference": "f606922b06679b64a6937d8bc18637c965c5278d"
+                "reference": "0fb12156b8591e56f206fe0db6552344be1007d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-http/zipball/f606922b06679b64a6937d8bc18637c965c5278d",
-                "reference": "f606922b06679b64a6937d8bc18637c965c5278d",
+                "url": "https://api.github.com/repos/symfony/security-http/zipball/0fb12156b8591e56f206fe0db6552344be1007d6",
+                "reference": "0fb12156b8591e56f206fe0db6552344be1007d6",
                 "shasum": ""
             },
             "require": {
@@ -7921,7 +7921,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-21T20:24:20+00:00"
+            "time": "2020-05-03T06:43:40+00:00"
         },
         {
             "name": "symfony/serializer",
