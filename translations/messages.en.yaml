@@ -15,3 +15,7 @@ song_credits:
 
 app_load_youtube_channel:
     description: Loads the KPA youtube channel to Videos
+
+menu.login: Log In
+menu.logout: Log Out
+menu.register: Register

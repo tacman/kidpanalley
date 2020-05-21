@@ -2,6 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^7.1.3",
         "ext-ctype": "*",
@@ -13,10 +14,11 @@
         "doctrine/orm": "*",
         "easycorp/easyadmin-bundle": "^2",
         "google/apiclient": "^2.0@dev",
-        "kevinpapst/adminlte-bundle": "dev-master",
+        "kevinpapst/adminlte-bundle": "dev-adminlte-v3",
+        "mindscreen/yarnlock": "^1.0",
         "phpoffice/phpword": "dev-master",
         "sensio/framework-extra-bundle": "^5.1",
-        "survos/landing-bundle": "*@dev",
+        "survos/base-bundle": "dev-master",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
         "symfony/dotenv": "5.1.*",
@@ -69,6 +71,17 @@
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
         "symfony/polyfill-php56": "*"
+    },
+    "repositories": {
+        "adminlte": {
+            "type": "vcs",
+            "url": "git@github.com:tacman/AdminLTEBundle.git"
+        },
+
+        "survosbase": {
+            "type": "vcs",
+            "url": "git@github.com:survos/BaseBundle.git"
+        }
     },
     "scripts": {
         "auto-scripts": {

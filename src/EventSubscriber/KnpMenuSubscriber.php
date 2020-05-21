@@ -2,38 +2,48 @@
 
 namespace App\EventSubscriber;
 
-use Survos\LandingBundle\Traits\KnpMenuHelperTrait;
+use Survos\BaseBundle\Traits\KnpMenuHelperTrait;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use KevinPapst\AdminLTEBundle\Event\KnpMenuEvent;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-class MenuSubscriber implements EventSubscriberInterface
+class KnpMenuSubscriber implements EventSubscriberInterface
 {
     use KnpMenuHelperTrait;
+
+    /**
+     * @var ParameterBagInterface
+     */
+    private $parameterBag;
+
     /**
      * @param AuthorizationCheckerInterface $security
      */
-    public function __construct(AuthorizationCheckerInterface $security)
+    private $security;
+
+    public function __construct(AuthorizationCheckerInterface $security, ParameterBagInterface $parameterBag)
     {
         $this->security = $security;
+        $this->parameterBag = $parameterBag;
     }
-
-
 
     public function onKnpMenuEvent(KnpMenuEvent $event)
     {
-        $isAdmin = $this->security->isGranted("ROLE_ADMIN");
+        $env = $this->parameterBag->get('kernel.environment');
+        $isAdmin = ('dev' == $env) || $this->security->isGranted("ROLE_ADMIN");
+
         $menu = $event->getMenu();
         $menu->addChild('survos_landing', ['label' => 'home', 'route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
-       // $menu->addChild('songs_credits', ['route' => 'app_credits_page'])->setAttribute('icon', 'fal fa-music');
+        // $menu->addChild('songs_credits', ['route' => 'app_credits_page'])->setAttribute('icon', 'fal fa-music');
 
-        $songMenu = $menu->addChild('songs');
-        $songMenu->addChild('song.list', ['route' => 'song_index']);
+        $songMenu = $this->addMenuItem($menu, ['id' => 'songs', 'icon' => 'fas fa-music']);
+        $this->addMenuItem($songMenu, ['route' => 'song_index']);
         if ($isAdmin) {
-            $songMenu->addChild('song.new', ['route' => 'song_new']);
+            $this->addMenuItem($songMenu, ['route' => 'song_new']);
         }
 
-        $videoMenu = $menu->addChild('videos');
+        $videoMenu = $this->addMenuItem($menu, ['id' => 'videos', 'icon' => 'fab fa-youtube']);
         $videoMenu->addChild('video.list', ['route' => 'video_index']);
         // $videoMenu->addChild('video.new', ['route' => 'video_new']);
 
@@ -44,8 +54,9 @@ class MenuSubscriber implements EventSubscriberInterface
             $loadMenu->addChild('app_load_songs', ['route' => 'app_load_songs'])->setAttribute('icon', 'fas fa-home');
             $loadMenu->addChild('app_load_lyrics', ['route' => 'app_load_lyrics'])->setAttribute('icon', 'fas fa-music');
             $loadMenu->addChild('app_load_youtube_channel', ['route' => 'app_load_youtube_channel'])->setAttribute('icon', 'fab fa-youtube');
-            $menu->addChild('survos_landing_credits', ['route' => 'survos_landing_credits'])->setAttribute('icon', 'fas fa-trophy');
         }
+        $menu->addChild('survos_landing_credits', ['route' => 'survos_landing_credits'])->setAttribute('icon', 'fas fa-trophy');
+        $menu->addChild('survos_typography', ['route' => 'app_typography'])->setAttribute('icon', 'fab fa-bootstrap');
 
         if ($isAdmin) {
             $menu->addChild('admin', ['route' => 'easyadmin'])->setAttribute('icon', 'fas fa-wrench');

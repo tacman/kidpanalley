@@ -1,6 +1,6 @@
 services:
   survos.landing_menu_builder:
-    class: Survos\LandingBundle\Menu\LandingMenuBuilder
+    class: Survos\BaseBundle\Menu\LandingMenuBuilder
     arguments:
       - "@knp_menu.factory"
       - "@security.authorization_checker"

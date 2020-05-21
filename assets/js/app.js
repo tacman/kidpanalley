@@ -1,23 +1,15 @@
-/* admin_lte??
-const $ = require('jquery');
+
+const jQuery = require('jquery');
+
+// this is the node module, installed with yarn add admin-lte@^3.0
+require('admin-lte');
+
 require('bootstrap');
+
 const Popper = require('popper.js');
-require('@fortawesome/fontawesome-free/css/all.min.css');
-require('@fortawesome/fontawesome-free/js/all.js');
 
-*/
 // any CSS you require will output into a single css file (app.css in this case)
-require('../css/app.css');
+require('../css/app.scss');
 
-require('datatables.net');
-require('datatables.net-bs4');
 
-console.log("Initial datatables");
-global.$('.js-datatable').DataTable({});
-/**
-bootstrap
-\u0040fortawesome\/fontawesome\u002Dfree
-fontawesome
-jquery
-popper.js
-**/
+

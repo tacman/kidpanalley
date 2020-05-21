@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Survos\LandingBundle\Entity\SurvosBaseEntity;
+use Survos\BaseBundle\Entity\SurvosBaseEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SongRepository")
