@@ -2,13 +2,15 @@
 
 namespace App\EventSubscriber;
 
+use Survos\BaseBundle\Menu\BaseMenuSubscriber;
+use Survos\BaseBundle\Menu\MenuBuilder;
 use Survos\BaseBundle\Traits\KnpMenuHelperTrait;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use KevinPapst\AdminLTEBundle\Event\KnpMenuEvent;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-class KnpMenuSubscriber implements EventSubscriberInterface
+class KnpMenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterface
 {
     use KnpMenuHelperTrait;
 
@@ -71,7 +73,8 @@ class KnpMenuSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KnpMenuEvent::class => 'onKnpMenuEvent',
+//            KnpMenuEvent::class => 'onKnpMenuEvent',
+            MenuBuilder::SIDEBAR_MENU_EVENT => 'onKnpMenuEvent',
         ];
     }
 }
