@@ -17,6 +17,7 @@
         "easycorp/easyadmin-bundle": "^2",
         "google/apiclient": "^2.0@dev",
         "kevinpapst/adminlte-bundle": "dev-adminlte-v3",
+        "league/oauth2-facebook": "^2.0",
         "league/oauth2-github": "^2.0",
         "mindscreen/yarnlock": "^1.0",
         "nelmio/cors-bundle": "^2.1",

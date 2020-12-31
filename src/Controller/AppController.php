@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Song;
+use App\Repository\SongRepository;
 use App\Services\AppService;
 use App\Services\DocxConversion;
 use Doctrine\ORM\EntityManagerInterface;
@@ -64,11 +65,12 @@ class AppController extends AbstractController
     /**
      * @Route("/", name="app_homepage", methods={"GET"})
      */
-    public function homepage()
+    public function homepage(SongRepository $songRepository)
     {
         $user = $this->getUser();
         return $this->render('app/homepage.html.twig', [
-            'user' => $user
+            'user' => $user,
+            'songCount' => $songRepository->count([])
         ]);
     }
 

@@ -14,6 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface
 {
     use \Survos\BaseBundle\Traits\GithubTrait;
+    use \Survos\BaseBundle\Traits\FacebookTrait;
 
     /**
      * @ORM\Id()
