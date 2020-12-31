@@ -122,4 +122,13 @@ class User implements UserInterface
     {
         return $this->getUsername();
     }
+
+    public function setToken($clientKey, $token) {
+        $method = 'set' . $clientKey . 'Id';
+        if (method_exists($this, $method)) {
+            $this->$method($token);
+        }
+        return $this;
+    }
+
 }
