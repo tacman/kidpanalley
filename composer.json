@@ -8,7 +8,9 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-zip": "*",
-        "api-platform/api-pack": "dev-master",
+        "api-platform/core": "^2.5",
+        "composer/package-versions-deprecated": "1.11.99.1",
+        "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
         "doctrine/orm": "*",
@@ -16,6 +18,8 @@
         "google/apiclient": "^2.0@dev",
         "kevinpapst/adminlte-bundle": "dev-adminlte-v3",
         "mindscreen/yarnlock": "^1.0",
+        "nelmio/cors-bundle": "^2.1",
+        "phpdocumentor/reflection-docblock": "^5.2",
         "phpoffice/phpword": "dev-master",
         "sensio/framework-extra-bundle": "^5.2",
         "survos/base-bundle": "dev-master",
@@ -30,16 +34,19 @@
         "symfony/intl": "^5.2",
         "symfony/monolog-bundle": "^3.1",
         "symfony/process": "^5.2",
+        "symfony/property-access": "5.2.*",
+        "symfony/property-info": "5.2.*",
+        "symfony/proxy-manager-bridge": "5.2.*",
         "symfony/security-bundle": "^5.2",
-        "symfony/serializer-pack": "*",
+        "symfony/serializer": "5.2.*",
         "symfony/swiftmailer-bundle": "^3.1",
         "symfony/translation": "^5.2",
         "symfony/twig-bundle": "^5.2",
         "symfony/validator": "^5.2",
         "symfony/web-link": "^5.2",
         "symfony/yaml": "^5.2",
-        "twig/extra-bundle": "3.x-dev",
-        "twig/intl-extra": "3.x-dev",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0",
         "yectep/phpspreadsheet-bundle": "*@dev"
     },
     "require-dev": {
@@ -77,7 +84,6 @@
             "type": "vcs",
             "url": "git@github.com:tacman/AdminLTEBundle.git"
         },
-
         "survosbase": {
             "type": "vcs",
             "url": "git@github.com:survos/BaseBundle.git"

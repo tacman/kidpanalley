@@ -117,6 +117,9 @@
     "firebase/php-jwt": {
         "version": "v5.0.0"
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.1"
+    },
     "google/apiclient": {
         "version": "2.0",
         "recipe": {
@@ -156,6 +159,9 @@
             "config/packages/admin_lte.yaml"
         ]
     },
+    "knplabs/knp-markdown-bundle": {
+        "version": "1.8.1"
+    },
     "knplabs/knp-menu": {
         "version": "3.2-dev"
     },
@@ -194,6 +200,9 @@
     },
     "markbaker/matrix": {
         "version": "1.2.0"
+    },
+    "michelf/php-markdown": {
+        "version": "1.9.0"
     },
     "mindscreen/yarnlock": {
         "version": "v1.0.1"
@@ -534,6 +543,9 @@
     "symfony/property-info": {
         "version": "4.4.x-dev"
     },
+    "symfony/proxy-manager-bridge": {
+        "version": "v5.2.1"
+    },
     "symfony/routing": {
         "version": "4.2",
         "recipe": {
@@ -697,9 +709,6 @@
         "version": "4.4.x-dev"
     },
     "twig/extra-bundle": {
-        "version": "3.x-dev"
-    },
-    "twig/intl-extra": {
         "version": "3.x-dev"
     },
     "twig/string-extra": {
