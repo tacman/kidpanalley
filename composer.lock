@@ -4822,12 +4822,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/BaseBundle.git",
-                "reference": "2e2d8131a735ef0b4bbd38b6261e0f13548f79bf"
+                "reference": "f3a123178ae84f3799398fa8835d511e6c615bf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/BaseBundle/zipball/2e2d8131a735ef0b4bbd38b6261e0f13548f79bf",
-                "reference": "2e2d8131a735ef0b4bbd38b6261e0f13548f79bf",
+                "url": "https://api.github.com/repos/survos/BaseBundle/zipball/f3a123178ae84f3799398fa8835d511e6c615bf4",
+                "reference": "f3a123178ae84f3799398fa8835d511e6c615bf4",
                 "shasum": ""
             },
             "require": {
@@ -4887,7 +4887,7 @@
                 "source": "https://github.com/survos/BaseBundle/tree/master",
                 "issues": "https://github.com/survos/BaseBundle/issues"
             },
-            "time": "2020-12-22T22:48:35+00:00"
+            "time": "2020-12-31T14:05:38+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
