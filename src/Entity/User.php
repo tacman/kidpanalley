@@ -15,6 +15,7 @@ class User implements UserInterface
 {
     use \Survos\BaseBundle\Traits\GithubTrait;
     use \Survos\BaseBundle\Traits\FacebookTrait;
+    use \Survos\BaseBundle\Traits\GoogleTrait;
 
     /**
      * @ORM\Id()
