@@ -13,6 +13,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    use \Survos\BaseBundle\Traits\GithubTrait;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
