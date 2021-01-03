@@ -62,6 +62,7 @@ class KnpMenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInt
 
         if ($isAdmin) {
             $menu->addChild('admin', ['route' => 'easyadmin'])->setAttribute('icon', 'fas fa-wrench');
+            $menu->addChild('heroku', ['route' => 'app_heroku'])->setAttribute('icon', 'fab fa-heroku');
         }
 
         $this->authMenu($this->security, $menu);

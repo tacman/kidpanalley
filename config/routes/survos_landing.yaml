@@ -4,6 +4,7 @@
 #    type: annotation
 
 # config/routes/survos_landing.yaml
+app_heroku: {path: /heroku, controller: 'Survos\BaseBundle\Controller\LandingController::heroku'}
 survos_landing: {path: /, controller: 'Survos\BaseBundle\Controller\LandingController::landing'}
 # app_homepage: {path: /, controller: 'Survos\BaseBundle\Controller\LandingController::landing'}
 app_logo: {path: /logo, controller: 'Survos\BaseBundle\Controller\LandingController::logo'}
