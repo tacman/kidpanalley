@@ -10,10 +10,10 @@
 namespace App\EventSubscriber;
 
 use App\Entity\User;
-use KevinPapst\AdminLTEBundle\Event\NavbarUserEvent;
-use KevinPapst\AdminLTEBundle\Event\ShowUserEvent;
-use KevinPapst\AdminLTEBundle\Event\SidebarUserEvent;
-use KevinPapst\AdminLTEBundle\Model\UserModel;
+use Survos\BaseBundle\Event\NavbarUserEvent;
+use Survos\BaseBundle\Event\ShowUserEvent;
+use Survos\BaseBundle\Event\SidebarUserEvent;
+use Survos\BaseBundle\Model\UserModel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Security;
 

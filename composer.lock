@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e4c92b448f498d2af93b5947c9d793d",
+    "content-hash": "fc653d1aea5a7385cfdbab31aed432a7",
     "packages": [
         {
             "name": "api-platform/core",
@@ -11346,7 +11346,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "google/apiclient": 20,
-        "kevinpapst/adminlte-bundle": 20,
         "phpoffice/phpword": 20,
         "survos/base-bundle": 20,
         "yectep/phpspreadsheet-bundle": 20

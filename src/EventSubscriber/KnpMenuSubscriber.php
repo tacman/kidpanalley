@@ -7,7 +7,7 @@ use Survos\BaseBundle\Menu\MenuBuilder;
 use Survos\BaseBundle\Traits\KnpMenuHelperTrait;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use KevinPapst\AdminLTEBundle\Event\KnpMenuEvent;
+use Survos\BaseBundle\Event\KnpMenuEvent;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class KnpMenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterface
