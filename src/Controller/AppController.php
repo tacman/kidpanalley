@@ -63,6 +63,7 @@ class AppController extends AbstractController
     }
 
     /**
+     * @Route("/welcome", name="adminlte_welcome", methods={"GET"})
      * @Route("/", name="app_homepage", methods={"GET"})
      */
     public function homepage(SongRepository $songRepository)

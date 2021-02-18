@@ -1,4 +1,4 @@
-{% extends "@SurvosBase/base.html.twig" %}
+{% extends "@SurvosBase/volt/layout.html.twig" %}
 
 {% block logo_mini %}<b>KPA</b>{% endblock %}
 {% block logo_large '<b>KPA</b> Admin' %}
@@ -34,4 +34,8 @@
     <strong>Data Copyright &copy; 2020 <a href="#">Kid Pan Alley</a>.</strong>  All rights reserved.
     <strong>Code Copyright &copy; 2020 <a href="#">Survos</a>.</strong>  All rights reserved.
 </footer>
+{% endblock %}
+
+{% block body %}
+    {{ block('page_content') }}
 {% endblock %}
