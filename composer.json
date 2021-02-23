@@ -4,7 +4,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4",
+        "php": "^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-zip": "*",
@@ -82,6 +82,14 @@
         "symfony/polyfill-php56": "*"
     },
     "repositories": {
+        "survos_base_bundle": {
+            "type": "vcs",
+            "url": "git@github.com:survos/BaseBundle.git"
+        },
+        "survos_markdown_bundle": {
+            "type": "vcs",
+            "url": "git@github.com:survos/KnpMarkdownBundle.git"
+        },
         "adminlte": {
             "type": "vcs",
             "url": "git@github.com:tacman/AdminLTEBundle.git"

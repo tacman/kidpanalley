@@ -1,6 +1,7 @@
 require('@popperjs/core');
 require('bootstrap');
-// require('Hinclude/hinclude');
+require('Hinclude/hinclude');
+require('../css/app.scss');
 
 // require('admin-lte'); // This comes from yarn add admin-lte (not the admin-lte bundle, which includes bootstrap).
 // require('jquery-sparkline');
@@ -9,5 +10,4 @@ require('bootstrap');
 // const Popper = require('popper.js');
 
 // any CSS you require will output into a single css file (app.css in this case)
-require('../css/app.scss');
 

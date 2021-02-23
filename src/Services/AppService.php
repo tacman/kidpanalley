@@ -93,14 +93,15 @@ class AppService
         foreach ($finder as $file) {
             dump($file->getFilename());
             $absoluteFilePath = $file->getRealPath();
-            if (!is_readable($absoluteFilePath)) {
+            if (!file_exists($absoluteFilePath) || !is_readable($absoluteFilePath)) {
                 throw new \Exception($absoluteFilePath . ' is not readable');
             }
+            dd($absoluteFilePath);
 
             try {
-                $reader = IOFactory::load($absoluteFilePath);
-
-                $fileNameWithExtension = $file->getRelativePathname();
+//                $reader = IOFactory::load($absoluteFilePath);
+//
+//                $fileNameWithExtension = $file->getRelativePathname();
                 $reader = IOFactory::createReader();
                 $phpWord = $reader->load($absoluteFilePath);
 

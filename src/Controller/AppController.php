@@ -15,6 +15,7 @@ use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -221,9 +222,9 @@ class AppController extends AbstractController
      *
      * @Route("/load-kpa-channel", name="app_load_youtube_channel")
      */
-    public function loadYoutubeChannel(EntityManagerInterface $em, LoggerInterface $logger, AppService $appService)
+    public function loadYoutubeChannel(EntityManagerInterface $em, LoggerInterface $logger, ParameterBagInterface $bag, AppService $appService)
     {
-        $key = $this->getParameter('youtube_api_key');
+        $key = $bag->get('youtube_api_key');
         $videos = $appService->fetchYoutubeChannel($key, 'UCt7IqS6nJWbJk6HByzJs5Tg');
         return $this->redirectToRoute('video_index');
 

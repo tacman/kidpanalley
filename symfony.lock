@@ -150,18 +150,6 @@
     "guzzlehttp/psr7": {
         "version": "1.x-dev"
     },
-    "kevinpapst/adminlte-bundle": {
-        "version": "0.9",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "0.9",
-            "ref": "dca6a91efc23d844326d2e90b47bdf48a5038fcf"
-        },
-        "files": [
-            "config/packages/admin_lte.yaml"
-        ]
-    },
     "knplabs/knp-menu": {
         "version": "3.2-dev"
     },
